@@ -29,7 +29,6 @@ astropy = ">=5.0"
 scipy = { version = ">=1.7", python = ">=3.8,<3.11" }
 matplotlib = ">=3.1"
 astroquery = ">=0.3.10"
-oktopus = ">=0.1.2"
 beautifulsoup4 = ">=4.6.0"
 requests = ">=2.22.0"
 urllib3 = { version = ">=1.23", python = ">=3.8,<4.0" }  # necessary to make requests work on py310
