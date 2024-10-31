@@ -70,8 +70,7 @@ setup(
             "docutils!=0.21",  # Exclude problematic version
         ]
     },
-    python_requires='>=3.8',
-    test_suite='tests',
+    test_suite="tests",
     tests_require=[
         "pytest>=6.1.2",
     ],
