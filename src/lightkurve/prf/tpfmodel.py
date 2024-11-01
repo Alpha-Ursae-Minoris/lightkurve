@@ -37,6 +37,7 @@ pp.run(tpf.flux, pos_corr1=tpf.pos_corr1, pos_corr2=tpf.pos_corr2, cadences=rang
 pp.plot_results()
 print('The star flux in the first cadence is {}'.format(pp.results[0].stars[0].flux))
 """
+
 from __future__ import division, print_function
 
 import logging
@@ -45,7 +46,7 @@ import numpy as np
 from tqdm import tqdm
 import warnings
 
-from oktopus import Prior, GaussianPrior, UniformPrior, PoissonPosterior
+from .priors import Prior, GaussianPrior, UniformPrior, PoissonPosterior
 
 from .prfmodel import KeplerPRF
 from ..utils import plot_image
@@ -226,8 +227,8 @@ class MotionPrior(PriorContainer):
 
     def __init__(
         self,
-        shift_col=GaussianPrior(mean=0, var=1.0 ** 2),
-        shift_row=GaussianPrior(mean=0, var=1.0 ** 2),
+        shift_col=GaussianPrior(mean=0, var=1.0**2),
+        shift_row=GaussianPrior(mean=0, var=1.0**2),
     ):
         self.shift_col = self._parse_prior(shift_col)
         self.shift_row = self._parse_prior(shift_row)
@@ -626,7 +627,7 @@ class TPFModel(object):
         method="powell",
         pos_corr1=None,
         pos_corr2=None,
-        **kwargs
+        **kwargs,
     ):
         """Fits the model to the data.
 
@@ -681,7 +682,7 @@ class TPFModel(object):
                 self.prfmodel.row,
                 self.prfmodel.row + self.prfmodel.shape[0],
             ),
-            **kwargs
+            **kwargs,
         )
 
     def plot_diagnostics(self, data, figsize=(12, 4), *params, **kwargs):
@@ -699,21 +700,21 @@ class TPFModel(object):
             ax=ax[0],
             title="Observed Data, Channel: {}".format(self.prfmodel.channel),
             extent=extent,
-            **kwargs
+            **kwargs,
         )
         plot_image(
             fit.predicted_image,
             ax=ax[1],
             title="Predicted Image, Channel: {}".format(self.prfmodel.channel),
             extent=extent,
-            **kwargs
+            **kwargs,
         )
         plot_image(
             fit.residual_image,
             ax=ax[2],
             title="Residual Image, Channel: {}".format(self.prfmodel.channel),
             extent=extent,
-            **kwargs
+            **kwargs,
         )
         return fit
 
